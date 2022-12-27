@@ -1,5 +1,6 @@
-pragma solidity >=0.6.7 <9.0.0;
+// SPDX-License-Identifier: MIT
 
+pragma solidity >=0.6.7 <9.0.0;
 
 interface ERC20 {
     function totalSupply() external view returns (uint _totalSupply);
@@ -31,12 +32,12 @@ contract Berpu is ERC20 {
     mapping (address => mapping (address => uint)) private __allowances;
 
     //the creator of the contract has the total supply and no one can create tokens
-    constructor() public {
+    constructor() {
         __balanceOf[msg.sender] = __totalSupply;
     }
 
     //constant value that does not change/  returns the amount of initial tokens to display
-    function totalSupply() public view override returns (uint _totalSupply) {
+    function totalSupply() public pure override returns (uint _totalSupply) {
         _totalSupply = __totalSupply;
     }
 
